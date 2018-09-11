@@ -1,20 +1,36 @@
 
 class Coin:
 
-    def __init__(self):
-        pass
+    def __new__(cls, value):
+        coin = object.__new__(cls)
+
+        if isinstance(coin, Pence) and value >= 100:
+            coin = object.__new__(Pound)
+            value /= 100
+
+        coin.__init__(value)
+        return coin
+
+    def __init__(self, value):
+        self.value = value
+
+    def __eq__(self, other):
+        if isinstance(other, Coin):
+            return self.value == other.value
+
+        if isinstance(other, float):
+            other = int(other * 100)
+        return self.value == other
 
 
 class Pound(Coin):
 
-    def __init__(self):
-        pass
+    def __init__(self, value):
+        super().__init__(value * 100)
 
 
 class Pence(Coin):
-
-    def __init__(self):
-        pass
+    pass
 
 
 class CoinCollection:
