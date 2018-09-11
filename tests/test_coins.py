@@ -17,10 +17,17 @@ def test_100_pence_makes_1_pound():
     assert isinstance(pound, Pound)
 
 
-def coins_are_comparable_to_ints():
+def test_coins_are_comparable_to_floats():
     pound = Pound(1)
     pence = Pence(20)
 
     assert pound == 1.00
     assert pence == 0.20
 
+
+def test_coins_are_comparable_to_ints():
+    pound = Pound(1)
+    pence = Pence(20)
+
+    assert pound == 100
+    assert pence == 20

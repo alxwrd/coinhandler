@@ -4,6 +4,7 @@ from coinhandler import CoinHandler, Pound, Pence, Transaction
 
 test_coin_amounts = (2.00, 1.00, 0.50, 0.20, 0.05)
 
+
 def test_starting_float_correct_total():
     handler = CoinHandler(starting_float=test_coin_amounts)
 
@@ -13,7 +14,9 @@ def test_starting_float_correct_total():
 def test_starting_float_correct_coins():
     handler = CoinHandler(starting_float=test_coin_amounts)
 
-    assert handler.available_coins == [Pound(2), Pound(1), Pence(50), Pence(20), Pence(5)]
+    assert handler.available_coins == [
+        Pound(2), Pound(1), Pence(50), Pence(20), Pence(5)
+        ]
 
 
 def test_inserting_coins_doesnt_update_total():
@@ -83,5 +86,6 @@ def test_after_purchase_correct_coins_remain():
 
     handler.purchase(1.25)
 
-    assert handler.available_coins == [Pound(2), Pound(1), Pound(1), Pence(50), Pence(50)]
-
+    assert handler.available_coins == [
+            Pound(2), Pound(1), Pound(1), Pence(50), Pence(50)
+        ]
