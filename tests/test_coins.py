@@ -21,6 +21,6 @@ def coins_are_comparable_to_ints():
     pound = Pound(1)
     pence = Pence(20)
 
-    assert pound == 100
-    assert pence == 20
+    assert pound == 1.00
+    assert pence == 0.20
 
