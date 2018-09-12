@@ -22,15 +22,23 @@ class Coin:
             other = int(other * 100)
         return self.value == other
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.value})"
+
 
 class Pound(Coin):
 
     def __init__(self, value):
         super().__init__(value * 100)
 
+    def __str__(self):
+        return f"£{self.value // 100}"
+
 
 class Pence(Coin):
-    pass
+
+    def __str__(self):
+        return f"{self.value}p"
 
 
 class CoinCollection:
@@ -52,6 +60,8 @@ class CoinCollection:
                 "added to a 'CoinCollection'")
         self.__coins.append(item)
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}[{self.__coins}]"
 
 
 class Transaction(CoinCollection):
