@@ -35,11 +35,24 @@ class Pence(Coin):
 
 class CoinCollection:
 
-    def __init__(self):
-        pass
+    def __init__(self, *coins):
+        self.__coins = []
+        for coin in coins:
+            self.append(coin)
+
+    def append(self, item):
+        if isinstance(item, int):
+            item = Coin(item)
+        if isinstance(item, float):
+            item = Coin(int(item * 100))
+
+        if not isinstance(item, Coin):
+            raise ValueError(
+                "Only 'int', 'float', or 'Coin' can be "
+                "added to a 'CoinCollection'")
+        self.__coins.append(item)
+
 
 
 class Transaction(CoinCollection):
-
-    def __init__(self):
-        pass
+    pass
