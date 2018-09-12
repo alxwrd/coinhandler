@@ -4,7 +4,13 @@ class Coin:
 
     def __new__(cls, value):
         value *= cls.multiplier  # Adjust the value
-        for klass in Coin.__subclasses__():
+
+        subclasses = sorted(
+            Coin.__subclasses__(),
+            key=lambda c: c.multiplier,
+            reverse=True)
+
+        for klass in subclasses:
             # If the classes multiplier is a multiple of the value,
             #  upgrade the new object to that type.
             if value % klass.multiplier == 0:
