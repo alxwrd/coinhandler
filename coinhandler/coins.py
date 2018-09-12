@@ -64,7 +64,8 @@ class CoinCollection:
         self.__coins.append(item)
 
     def __repr__(self):
-        return f"{self.__class__.__name__}[{self.__coins}]"
+        coins = ", ".join(repr(coin) for coin in self.__coins)
+        return f"{self.__class__.__name__}({coins})"
 
 
 class Transaction(CoinCollection):
