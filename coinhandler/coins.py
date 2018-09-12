@@ -1,18 +1,16 @@
 
 class Coin:
+    multiplier = 1
 
     def __new__(cls, value):
-        coin = object.__new__(cls)
-
-        if isinstance(coin, Pence) and value >= 100:
-            coin = object.__new__(Pound)
-            value /= 100
-
-        coin.__init__(value)
-        return coin
-
-    def __init__(self, value):
-        self.value = value
+        value *= cls.multiplier  # Adjust the value
+        for klass in Coin.__subclasses__():
+            # If the classes multiplier is a multiple of the value,
+            #  upgrade the new object to that type.
+            if value % klass.multiplier == 0:
+                coin = object.__new__(klass)
+                coin.value = value
+                return coin
 
     def __eq__(self, other):
         if isinstance(other, Coin):
@@ -23,19 +21,18 @@ class Coin:
         return self.value == other
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.value})"
+        return f"{self.__class__.__name__}({self.value // self.multiplier})"
 
 
 class Pound(Coin):
-
-    def __init__(self, value):
-        super().__init__(value * 100)
+    multiplier = 100
 
     def __str__(self):
-        return f"£{self.value // 100}"
+        return f"£{self.value // self.multiplier}"
 
 
 class Pence(Coin):
+    multiplier = 1
 
     def __str__(self):
         return f"{self.value}p"
