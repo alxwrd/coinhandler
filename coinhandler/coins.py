@@ -1,4 +1,15 @@
 
+def coerce_other(func):
+    def wrapper(self, other):
+        if isinstance(other, Coin):
+            other = other.value
+
+        if isinstance(other, float):
+            other = int(other * 100)
+        return func(self, other)
+    return wrapper
+
+
 class Coin:
     multiplier = 1
 
@@ -18,13 +29,13 @@ class Coin:
                 coin.value = value
                 return coin
 
+    @coerce_other
     def __eq__(self, other):
-        if isinstance(other, Coin):
-            return self.value == other.value
-
-        if isinstance(other, float):
-            other = int(other * 100)
         return self.value == other
+
+    @coerce_other
+    def __lt__(self, other):
+        return self.value < other
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.value // self.multiplier})"
@@ -75,7 +86,7 @@ class CoinCollection:
         return sum(coin.value for coin in self.__coins)
 
     def __eq__(self, other):
-        return self.__coins == other
+        return sorted(self.__coins) == sorted(other)
 
     def __repr__(self):
         coins = ", ".join(repr(coin) for coin in self.__coins)
