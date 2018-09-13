@@ -16,6 +16,7 @@ def test_starting_float_correct_coins():
 
     assert handler.available_coins == test_coin_amounts
 
+
 def test_inserting_coins_doesnt_update_total():
     handler = CoinHandler(starting_float=test_coin_amounts)
 
