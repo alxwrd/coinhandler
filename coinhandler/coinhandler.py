@@ -14,8 +14,4 @@ class CoinHandler:
         self.current_transaction.append(value)
 
     def return_coins(self):
-        coins = []
-        while self.current_transaction.total():
-            coins.append(self.current_transaction.pop(0))
-
-        return CoinCollection(*coins)
+        return self.current_transaction.clear()

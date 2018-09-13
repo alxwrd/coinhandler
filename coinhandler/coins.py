@@ -63,6 +63,11 @@ class CoinCollection:
                 "added to a 'CoinCollection'")
         self.__coins.append(item)
 
+    def clear(self):
+        coins = self.__coins[:]
+        self.__coins.clear()
+        return CoinCollection(*coins)
+
     def pop(self, index=-1):
         return self.__coins.pop(index)
 
