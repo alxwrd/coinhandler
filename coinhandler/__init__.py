@@ -1,3 +1,3 @@
 
 from .coinhandler import CoinHandler
-from .coins import Pound, Pence, Coin, CoinCollection, Transaction
+from .coins import Coin, CoinCollection, Transaction

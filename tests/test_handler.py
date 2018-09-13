@@ -1,6 +1,6 @@
 import pytest
 
-from coinhandler import CoinHandler, Pound, Pence, Transaction
+from coinhandler import CoinHandler, CoinCollection, Transaction, Coin
 
 test_coin_amounts = (2.00, 1.00, 0.50, 0.20, 0.05)
 
@@ -14,10 +14,7 @@ def test_starting_float_correct_total():
 def test_starting_float_correct_coins():
     handler = CoinHandler(starting_float=test_coin_amounts)
 
-    assert handler.available_coins == [
-        Pound(2), Pound(1), Pence(50), Pence(20), Pence(5)
-        ]
-
+    assert handler.available_coins == test_coin_amounts
 
 def test_inserting_coins_doesnt_update_total():
     handler = CoinHandler(starting_float=test_coin_amounts)
@@ -50,7 +47,7 @@ def test_correct_coins_are_returned():
 
     handler.insert(0.50)
     handler.insert(1.00)
-    assert handler.return_coins() == [Pence(50), Pound(1)]
+    assert handler.return_coins() == [Coin(50), Coin(100)]
 
 
 def test_purchase_deducts_from_transaction():
@@ -72,7 +69,7 @@ def test_after_purchase_correct_amount_is_returned():
 
     handler.purchase(1.25)
 
-    assert handler.return_coins() == [Pence(20), Pence(5)]
+    assert handler.return_coins() == [Coin(20), Coin(5)]
 
 
 def test_after_purchase_correct_total():
@@ -95,5 +92,5 @@ def test_after_purchase_correct_coins_remain():
     handler.purchase(1.25)
 
     assert handler.available_coins == [
-            Pound(2), Pound(1), Pound(1), Pence(50), Pence(50)
+            Coin(200), Coin(100), Coin(100), Coin(50), Coin(50)
         ]
