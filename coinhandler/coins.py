@@ -63,6 +63,9 @@ class CoinCollection:
                 "added to a 'CoinCollection'")
         self.__coins.append(item)
 
+    def pop(self, index=-1):
+        return self.__coins.pop(index)
+
     def total(self):
         return sum(coin.value for coin in self.__coins)
 
