@@ -63,6 +63,9 @@ class CoinCollection:
                 "added to a 'CoinCollection'")
         self.__coins.append(item)
 
+    def total(self):
+        return sum(coin.value for coin in self.__coins)
+
     def __eq__(self, other):
         return self.__coins == other
 
