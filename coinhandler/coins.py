@@ -106,6 +106,16 @@ class CoinCollection:
         for coin in coins:
             self.append(coin)
 
+    @classmethod
+    @coerce_other
+    def from_value(cls, value):
+        coins = []
+        for klass in Coin.sub_coins():
+            amount, value = divmod(value, klass.multiplier)
+            if amount:
+                coins.extend(Coin(klass.multiplier) for _ in range(amount))
+        return cls(*coins)
+
     def append(self, item):
         if isinstance(item, int):
             item = Coin(item)

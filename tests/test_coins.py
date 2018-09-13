@@ -40,3 +40,7 @@ def test_coin_gets_correct_subclass():
 
 def test_coin_collections_are_equal():
     assert CoinCollection(1, 2) == CoinCollection(1, 2)
+
+
+def test_creating_collection_from_value():
+    assert CoinCollection.from_value(1.25) == CoinCollection(100, 20, 5)
