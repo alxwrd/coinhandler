@@ -48,8 +48,9 @@ def test_coins_are_returned():
 def test_correct_coins_are_returned():
     handler = CoinHandler(starting_float=test_coin_amounts)
 
-    handler.insert(2.00)
-    assert handler.return_coins() == [Pound(2)]
+    handler.insert(0.50)
+    handler.insert(1.00)
+    assert handler.return_coins() == [Pence(50), Pound(1)]
 
 
 def test_purchase_deducts_from_transaction():
