@@ -16,18 +16,20 @@ class Coin:
     def __new__(cls, value):
         value *= cls.multiplier  # Adjust the value
 
-        subclasses = sorted(
-            Coin.__subclasses__(),
-            key=lambda c: c.multiplier,
-            reverse=True)
-
-        for klass in subclasses:
+        for klass in Coin.sub_coins():
             # If the classes multiplier is a multiple of the value,
             #  upgrade the new object to that type.
             if value % klass.multiplier == 0:
                 coin = object.__new__(klass)
                 coin.value = value
                 return coin
+
+    @classmethod
+    def sub_coins(cls):
+        return sorted(
+            Coin.__subclasses__(),
+            key=lambda c: c.multiplier,
+            reverse=True)
 
     @coerce_other
     def __eq__(self, other):
