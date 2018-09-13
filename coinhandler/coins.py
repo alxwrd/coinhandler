@@ -85,6 +85,9 @@ class CoinCollection:
     def total(self):
         return sum(coin.value for coin in self.__coins)
 
+    def __getitem__(self, index):
+        return self.__coins[index]
+
     def __eq__(self, other):
         return sorted(self.__coins) == sorted(other)
 
