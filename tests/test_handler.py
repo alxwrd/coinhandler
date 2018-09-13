@@ -45,6 +45,13 @@ def test_coins_are_returned():
     assert handler.total() == sum(test_coin_amounts)
 
 
+def test_correct_coins_are_returned():
+    handler = CoinHandler(starting_float=test_coin_amounts)
+
+    handler.insert(2.00)
+    assert handler.return_coins() == [Pound(2)]
+
+
 def test_purchase_deducts_from_transaction():
     handler = CoinHandler(starting_float=test_coin_amounts)
 
