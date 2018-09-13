@@ -63,6 +63,9 @@ class CoinCollection:
                 "added to a 'CoinCollection'")
         self.__coins.append(item)
 
+    def __eq__(self, other):
+        return self.__coins == other
+
     def __repr__(self):
         coins = ", ".join(repr(coin) for coin in self.__coins)
         return f"{self.__class__.__name__}({coins})"
