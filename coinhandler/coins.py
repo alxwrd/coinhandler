@@ -43,14 +43,56 @@ class Coin:
         return f"{self.__class__.__name__}({self.value // self.multiplier})"
 
 
-class Pound(Coin):
+class TwoPound(Coin):
+    multiplier = 200
+
+    def __str__(self):
+        return f"£{self.value // self.multiplier}"
+
+
+class OnePound(Coin):
     multiplier = 100
 
     def __str__(self):
         return f"£{self.value // self.multiplier}"
 
 
-class Pence(Coin):
+class FiftyPence(Coin):
+    multiplier = 50
+
+    def __str__(self):
+        return f"{self.value}p"
+
+
+class TwentyPence(Coin):
+    multiplier = 20
+
+    def __str__(self):
+        return f"{self.value}p"
+
+
+class TenPence(Coin):
+    multiplier = 10
+
+    def __str__(self):
+        return f"{self.value}p"
+
+
+class FivePence(Coin):
+    multiplier = 5
+
+    def __str__(self):
+        return f"{self.value}p"
+
+
+class TwoPence(Coin):
+    multiplier = 2
+
+    def __str__(self):
+        return f"{self.value}p"
+
+
+class OnePence(Coin):
     multiplier = 1
 
     def __str__(self):
