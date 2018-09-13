@@ -1,6 +1,6 @@
 import pytest
 
-from coinhandler import Pound, Pence, Coin
+from coinhandler import Pound, Pence, Coin, CoinCollection
 
 
 def test_pounds_are_equal():
@@ -57,3 +57,6 @@ def test_coin_can_get_correct_subclass_from_new_coins():
     assert Coin(50) == Fifty(1)
     assert Coin(20) == Twenty(1)
     assert Coin(10) == Ten(1)
+
+def test_coin_collections_are_equal():
+    assert CoinCollection(1, 2) == CoinCollection(1, 2)
