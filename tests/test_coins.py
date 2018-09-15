@@ -62,5 +62,13 @@ def test_extending_collection():
     assert collection == CoinCollection(1, 2, 3, 4)
 
 
+def test_removing_coins_from_collection():
+    collection = CoinCollection(1, 2)
+
+    collection.remove(1)
+
+    assert collection == CoinCollection(2)
+
+
 def test_collection_equal_to_list():
     assert CoinCollection(1, 2, 3) == [1, 2, 3]

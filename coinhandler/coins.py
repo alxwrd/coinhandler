@@ -124,6 +124,10 @@ class CoinCollection:
         for item in iterable:
             self.append(item)
 
+    @coerce_other
+    def remove(self, item):
+        self.__coins.remove(Coin(item))
+
     def clear(self):
         coins = self.__coins[:]
         self.__coins.clear()
