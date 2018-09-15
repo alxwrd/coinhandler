@@ -13,7 +13,7 @@ def coerce_other(func):
 class Coin:
     multiplier = 1
 
-    def __new__(cls, value):
+    def __new__(cls, value=1):
         value *= cls.multiplier  # Adjust the value
 
         for klass in Coin.sub_coins():
