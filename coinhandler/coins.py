@@ -31,6 +31,10 @@ class Coin:
             key=lambda c: c.multiplier,
             reverse=True)
 
+    @property
+    def amount(self):
+        return self.value // self.multiplier
+
     @coerce_other
     def __eq__(self, other):
         return self.value == other
@@ -40,7 +44,7 @@ class Coin:
         return self.value < other
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.value // self.multiplier})"
+        return f"{self.__class__.__name__}({self.amount})"
 
 
 class TwoPound(Coin):
