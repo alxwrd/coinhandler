@@ -81,7 +81,7 @@ def test_after_purchase_correct_total():
 
     handler.purchase(1.25)
 
-    assert handler.total() == 4.00
+    assert handler.total() == 5.00
 
 
 def test_after_purchase_correct_coins_remain():
