@@ -113,7 +113,7 @@ Transaction(FiftyPence(1))
 
 Moves the coins from `current_transaction` into the `available_coins` and
 makes the difference in coins between the purchase _value_ and the
-`current_transation.total()` availble in `.current_transaction`.
+`current_transation.total()` available in `.current_transaction`.
 
 ```python
 >>> handler.available_coins
@@ -273,7 +273,7 @@ OnePound(1)
 
 ### Coin
 
-A `Coin` object represents a _value_. It's use allows representing money
+A `Coin` object represents a _value_. Its use allows representing money
 using _int_ vs. _float_.
 
 The `Coin` class is a factory class for all other _Coins_ that have been defined.
