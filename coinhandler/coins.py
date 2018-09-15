@@ -120,6 +120,10 @@ class CoinCollection:
     def append(self, item):
         self.__coins.append(Coin(item))
 
+    def extend(self, iterable):
+        for item in iterable:
+            self.append(item)
+
     def clear(self):
         coins = self.__coins[:]
         self.__coins.clear()
