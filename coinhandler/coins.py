@@ -116,17 +116,9 @@ class CoinCollection:
                 coins.extend(Coin(klass.multiplier) for _ in range(amount))
         return cls(*coins)
 
+    @coerce_other
     def append(self, item):
-        if isinstance(item, int):
-            item = Coin(item)
-        if isinstance(item, float):
-            item = Coin(int(item * 100))
-
-        if not isinstance(item, Coin):
-            raise ValueError(
-                "Only 'int', 'float', or 'Coin' can be "
-                "added to a 'CoinCollection'")
-        self.__coins.append(item)
+        self.__coins.append(Coin(item))
 
     def clear(self):
         coins = self.__coins[:]
