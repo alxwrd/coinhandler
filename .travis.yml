@@ -1,0 +1,9 @@
+language: python
+python:
+  - "3.6"
+before_install:
+  - pip install pipenv
+  - pipenv install --dev --skip-lock
+script:
+  - pipenv run pycodestyle .
+  - pipenv run python -m pytest .
