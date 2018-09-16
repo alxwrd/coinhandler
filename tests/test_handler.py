@@ -123,7 +123,8 @@ def test_purchase_not_available_when_not_enough_transaction():
 
 
 def test_purchase_fails_and_returns_coins_when_insufficient_change():
-    handler = CoinHandler(starting_float=(0.50, 0.50, 0.50, 0.50))
+    handler = CoinHandler(starting_float=(0.50, 0.50, 0.50, 0.50, 0.10))
+    print(handler.available_coins)
 
     handler.insert(0.50)
 
@@ -131,4 +132,4 @@ def test_purchase_fails_and_returns_coins_when_insufficient_change():
         handler.purchase(0.20)
 
     assert handler.return_coins() == [0.50]
-    assert handler.available_coins == [0.50, 0.50, 0.50, 0.50]
+    assert handler.available_coins == [0.50, 0.50, 0.50, 0.50, 0.10]

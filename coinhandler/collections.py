@@ -25,7 +25,8 @@ class CoinCollection:
         for coin in self.__coins:
             amount, value = divmod(value, coin.multiplier)
             if amount:
-                coins.extend(Coin(coin.multiplier) for _ in range(amount))
+                coins.append(Coin(coin.multiplier))
+                value = ((amount - 1) * coin.multiplier) + value
         for coin in coins:
             self.remove(coin)
         return self.__class__(*coins)

@@ -22,9 +22,15 @@ class CoinHandler:
                 f"is not enough to cover {purchase_value.total()}"
                 )
 
-        change = self.available_coins.remove_by_value(
-            self.current_transaction.total() - purchase_value.total()
-        )
+        target_change = self.current_transaction.total() - purchase_value.total()
+
+        change = self.available_coins.remove_by_value(target_change)
+
+        if change.total() != target_change:
+            self.available_coins.extend(change)
+            raise NotEnoughChange(
+                "There is not enough available change to cover the transaction"
+                )
 
         self.available_coins.extend(self.current_transaction.clear())
 
