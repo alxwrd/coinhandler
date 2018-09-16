@@ -1,4 +1,4 @@
-from .coins import CoinCollection, Transaction
+from .collections import CoinCollection, Transaction
 
 
 class CoinHandler:

@@ -1,6 +1,6 @@
 import pytest
 
-from coinhandler import CoinHandler, CoinCollection, Transaction, Coin
+from coinhandler import CoinHandler
 
 test_coin_amounts = (2.00, 1.00, 0.50, 0.20, 0.05)
 
@@ -30,7 +30,7 @@ def test_transaction_is_tracked():
 
     handler.insert(2.00)
 
-    assert handler.current_transaction == Transaction(2.00)
+    assert handler.current_transaction == [2.00]
 
 
 def test_coins_are_returned():
@@ -39,7 +39,7 @@ def test_coins_are_returned():
     handler.insert(2.00)
     handler.return_coins()
 
-    assert handler.current_transaction == Transaction()
+    assert handler.current_transaction == []
     assert handler.total() == sum(test_coin_amounts)
 
 
@@ -48,7 +48,7 @@ def test_correct_coins_are_returned():
 
     handler.insert(0.50)
     handler.insert(1.00)
-    assert handler.return_coins() == [Coin(50), Coin(100)]
+    assert handler.return_coins() == [0.50, 1.00]
 
 
 def test_purchase_deducts_from_transaction():
@@ -59,7 +59,7 @@ def test_purchase_deducts_from_transaction():
 
     handler.purchase(1.25)
 
-    assert handler.current_transaction == Transaction(0.20, 0.05)
+    assert handler.current_transaction == [0.20, 0.05]
 
 
 def test_after_purchase_correct_amount_is_returned():
@@ -70,7 +70,7 @@ def test_after_purchase_correct_amount_is_returned():
 
     handler.purchase(1.25)
 
-    assert handler.return_coins() == [Coin(20), Coin(5)]
+    assert handler.return_coins() == [0.20, 0.05]
 
 
 def test_after_purchase_correct_total():
@@ -92,6 +92,4 @@ def test_after_purchase_correct_coins_remain():
 
     handler.purchase(1.25)
 
-    assert handler.available_coins == [
-            Coin(200), Coin(100), Coin(100), Coin(50), Coin(50)
-        ]
+    assert handler.available_coins == [2.00, 1.00, 1.00, 0.50, 0.50]
