@@ -14,15 +14,15 @@ class CoinHandler:
         self.current_transaction.append(value)
 
     def purchase(self, value):
-        purchase_value = CoinCollection.create_from_value(value)
+        purchase_value = CoinCollection.create_from_value(value).total()
 
-        if self.current_transaction.total() < purchase_value.total():
+        if self.current_transaction.total() < purchase_value:
             raise NotEnoughTransaction(
                 f"The amount {self.current_transaction.total()} "
-                f"is not enough to cover {purchase_value.total()}"
+                f"is not enough to cover {purchase_value}"
                 )
 
-        target_change = self.current_transaction.total() - purchase_value.total()
+        target_change = self.current_transaction.total() - purchase_value
 
         change = self.available_coins.remove_by_value(target_change)
 
