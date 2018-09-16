@@ -14,7 +14,7 @@ class CoinHandler:
         self.current_transaction.append(value)
 
     def purchase(self, value):
-        purchase_value = CoinCollection.create_from_value(value).total()
+        purchase_value = CoinCollection.from_value(value).total()
 
         if self.current_transaction.total() < purchase_value:
             raise NotEnoughTransaction(

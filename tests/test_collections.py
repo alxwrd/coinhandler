@@ -7,7 +7,7 @@ def test_coin_collections_are_equal():
 
 
 def test_creating_collection_from_value():
-    assert CoinCollection.create_from_value(1.25) == CoinCollection(100, 20, 5)
+    assert CoinCollection.from_value(1.25) == CoinCollection(100, 20, 5)
 
 
 def test_appending_to_collection():

@@ -11,7 +11,7 @@ class CoinCollection:
 
     @classmethod
     @coerce_other
-    def create_from_value(cls, value):
+    def from_value(cls, value):
         coins = []
         for klass in Coin.sub_coins():
             amount, value = divmod(value, klass.multiplier)
