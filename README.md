@@ -161,6 +161,26 @@ A `Transaction` object is a subclass of `CoinCollection`, and functions
 identically.
 
 
+#### `.remove_by_value(` _`value`_ `)` -> [`CoinCollection`](#coincollection)
+
+Removes coins from the collection by a value, and returns new collection
+with valid coins from the original collection.
+
+```python
+>>> collection = CoinCollection(2.00, 1.00, 0.20, 0.05)
+>>> collection.remove_by_value(1.25)
+CoinCollection(OnePound(1), TwentyPence(1), FivePence(1))
+```
+
+> NOTE: `.remove_by_value` will only remove available coins from
+> the original collection. So for the example:
+> ```python
+> >>> collection = CoinCollection(2.00, 1.00, 0.20, 0.05)
+> >>> collection.remove_by_value(1.30)
+> CoinCollection(OnePound(1), TwentyPence(1), FivePence(0.05))
+> ```
+> Only '`1.25`' is returned.
+
 #### `.total()`
 
 Returns the total value of the collection as a _float_.
