@@ -6,3 +6,7 @@ install:
 
 uninstall:
 	python3 -m pip uninstall coinhandler
+
+clean:
+	rm -rf build/ dist/ ety.egg-info/  __pycache__/ */__pycache__/ .pytest_cache/
+	rm -f *.pyc */*.pyc
