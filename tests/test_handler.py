@@ -113,6 +113,15 @@ def test_purchase_not_available_when_no_transaction():
         handler.purchase(1.00)
 
 
+def test_purchase_not_available_when_not_enough_transaction():
+    handler = CoinHandler(starting_float=test_coin_amounts)
+
+    handler.insert(0.50)
+
+    with pytest.raises(coinhandler.NotEnoughTransaction):
+        handler.purchase(1.00)
+
+
 def test_purchase_fails_and_returns_coins_when_insufficient_change():
     handler = CoinHandler(starting_float=(0.50, 0.50, 0.50, 0.50))
 
