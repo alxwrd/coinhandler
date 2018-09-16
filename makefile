@@ -10,3 +10,9 @@ uninstall:
 clean:
 	rm -rf build/ dist/ ety.egg-info/  __pycache__/ */__pycache__/ .pytest_cache/
 	rm -f *.pyc */*.pyc
+
+build:
+	python3 setup.py sdist bdist_wheel
+
+upload:
+	pipenv run twine upload dist/*
