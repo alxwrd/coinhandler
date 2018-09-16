@@ -15,16 +15,15 @@ class CoinHandler:
 
     def purchase(self, value):
 
-        purchase_value = CoinCollection.from_value(value)
+        purchase_value = CoinCollection.create_from_value(value)
 
-        change = CoinCollection.from_value(
+        change = self.available_coins.remove_by_value(
             self.current_transaction.total() - purchase_value.total()
         )
 
         self.available_coins.extend(self.current_transaction.clear())
 
         for coin in change:
-            self.available_coins.remove(coin)
             self.current_transaction.append(coin)
 
     def return_coins(self):

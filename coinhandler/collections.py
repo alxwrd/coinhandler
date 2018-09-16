@@ -11,13 +11,24 @@ class CoinCollection:
 
     @classmethod
     @coerce_other
-    def from_value(cls, value):
+    def create_from_value(cls, value):
         coins = []
         for klass in Coin.sub_coins():
             amount, value = divmod(value, klass.multiplier)
             if amount:
                 coins.extend(Coin(klass.multiplier) for _ in range(amount))
         return cls(*coins)
+
+    @coerce_other
+    def remove_by_value(self, value):
+        coins = []
+        for coin in self.__coins:
+            amount, value = divmod(value, coin.multiplier)
+            if amount:
+                coins.extend(Coin(coin.multiplier) for _ in range(amount))
+        for coin in coins:
+            self.remove(coin)
+        return self.__class__(*coins)
 
     @coerce_other
     def append(self, item):
