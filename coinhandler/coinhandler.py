@@ -29,3 +29,11 @@ class CoinHandler:
 
     def return_coins(self):
         return self.current_transaction.clear()
+
+
+class NotEnoughTransaction(Exception):
+    pass
+
+
+class NotEnoughChange(Exception):
+    pass
