@@ -12,7 +12,7 @@ clean:
 	rm -f *.pyc */*.pyc
 
 build:
-	python3 setup.py sdist bdist_wheel
+	pipenv run python setup.py sdist bdist_wheel
 
 upload:
 	pipenv run twine upload dist/*

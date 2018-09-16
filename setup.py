@@ -1,14 +1,17 @@
 from setuptools import setup
 
+with open('README.md') as f:
+    long_description = f.read()
+
 setup(
     name='coinhandler',
     packages=['coinhandler'],
-    version='0.1',
+    version='0.3',
     description='A Python module to handle interacting with coins',
     author='Alex Ward',
     author_email='alxwrd@googlemail.com',
     url='https://github.com/alxwrd/coins',
-    long_description=open('README.md', encoding="utf-8").read(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
     install_requires=[],
     license='MIT',

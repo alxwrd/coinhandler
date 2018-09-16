@@ -9,6 +9,7 @@ name = "pypi"
 pytest = "*"
 pycodestyle = "*"
 twine = "*"
+wheel = "*"
 
 [requires]
 python_version = "3.6"
