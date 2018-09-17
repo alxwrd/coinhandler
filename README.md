@@ -70,7 +70,7 @@ Provides access to the current supply of `Coin`s in in the handler.
 
 ```python
 >>> handler.available_coins
-CoinCollection(TwoPound(1), OnePound(1), FiftyPence(1), TwentyPence(20), FivePence(5))
+CoinCollection(TwoPound(1), OnePound(1), FiftyPence(1), TwentyPence(1), FivePence(1))
 ```
 
 #### `.current_transaction` -> [`Transaction`](#transaction)
@@ -314,7 +314,7 @@ can create undesirable `Coin` objects.
 >>> coin = Coin(23)
 OnePence(23)
 
-# Use a CoinColletion instead!
+# Use a CoinCollection instead!
 
 >>> CoinCollection.from_value(23)
 CoinCollection(TwentyPence(1), TwoPence(1), OnePence(1))
@@ -325,7 +325,7 @@ _Coins_ of a specfic type can be created by just by creating an instance of them
 ```python
 >>> from coinhandler.coins import OnePound
 >>> OnePound()
-OnePound()
+OnePound(1)
 ```
 
 All coins have a value, which is the represented as an _integer_.
@@ -341,7 +341,7 @@ Subclassing from `Coin` will add that coin to the available coins to be created.
 ```python
 >>> from coinhandler import Coin
 >>> Coin(25)
-FivePence(25)
+FivePence(5)
 
 >>> class Quarter(Coin):
 ...     multiplier = 25
