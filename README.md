@@ -3,6 +3,7 @@
 > A Python module to handle interacting with coins
 
 [![Build Status](https://travis-ci.com/alxwrd/coinhandler.svg?branch=master)](https://travis-ci.com/alxwrd/coinhandler)
+[![Python 3.6](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 ```python
 >>> from coinhandler import CoinHandler
@@ -21,6 +22,8 @@ CoinCollection(TwentyPence(1), FivePence(1))
 ```
 
 ## Installation
+
+> Coinhandler requires **Python 3.6** or greater!
 
 ### [pipenv](https://github.com/pypa/pipenv)*
 
