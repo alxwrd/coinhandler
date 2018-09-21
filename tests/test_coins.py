@@ -1,6 +1,6 @@
 import pytest
 
-from coinhandler.coins import Coin, OnePound, OnePence
+from coinhandler.coins import Coin, OnePound, OnePence, FivePence
 
 
 def test_coins_are_equal():
@@ -35,3 +35,14 @@ def test_coins_are_comparable_to_ints():
 
 def test_coin_gets_correct_subclass():
     assert Coin(100) == OnePound(1)
+
+
+def test_remove_coin_after_defined():
+    class Quarter(Coin):
+        multiplier = 25
+
+    assert Coin(25).__class__ == Quarter
+
+    Coin.remove_subcoin(Quarter)
+
+    assert Coin(25).__class__ == FivePence
