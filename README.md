@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.com/alxwrd/coinhandler.svg?branch=master)](https://travis-ci.com/alxwrd/coinhandler)
 [![Python 3.6](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Downloads](https://img.shields.io/badge/dynamic/json.svg?url=https://pypistats.org/api/packages/coinhandler/recent?mirrors=false&label=downloads&query=$.data.last_month&suffix=/month)](https://pypistats.org/packages/coinhandler)
 
 ```python
 >>> from coinhandler import CoinHandler
